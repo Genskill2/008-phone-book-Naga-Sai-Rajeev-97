@@ -68,7 +68,11 @@ int main(int argc, char *argv[]) {
     }
     FILE *fp = open_db_file();
     char *name = argv[2];
-    search(fp,name);
+    if (!search(fp, name)) {
+      printf("no match\n");
+      fclose(fp);
+      exit(1);
+    }
     fclose(fp);
     exit(0);/* TBD  */
   } else if (strcmp(argv[1], "delete") == 0) {  /* Handle delete */
@@ -261,8 +265,8 @@ int search(FILE *db_file,char *name)
   }
   if(flag!=1)
   {
-    printf("no match");
+    return 0;
   }
   free_entries(base);
-  return 0;
+  return 1;
 }
