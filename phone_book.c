@@ -62,10 +62,15 @@ int main(int argc, char *argv[]) {
     fclose(fp);
     exit(0);
   } else if (strcmp(argv[1], "search") == 0) {  /* Handle search */
+    if (argc != 3) {
+      print_usage("Improper arguments for search", argv[0]);
+      exit(1);
+    }
     FILE *fp = open_db_file();
     char *name = argv[2];
     search(fp,name);
-    fclose(fp); /* TBD  */
+    fclose(fp);
+    exit(0);/* TBD  */
   } else if (strcmp(argv[1], "delete") == 0) {  /* Handle delete */
     if (argc != 3) {
       print_usage("Improper arguments for delete", argv[0]);
