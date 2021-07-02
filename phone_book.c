@@ -256,7 +256,7 @@ int search(FILE *db_file,char *name)
   }
   if(flag!=1)
   {
-    printf("no match\n");
+    printf("no match");
   }
   free_entries(base);
   return 0;
